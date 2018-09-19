@@ -17,6 +17,7 @@ android {
         buildConfigField "String", "BASE_URL", "\"https://www.thesportsdb.com/\""
         buildConfigField "String", "EVENT_LAST", "\"api/v1/json/1/eventspastleague.php?id=4328\""
         buildConfigField "String", "EVENT_NEXT", "\"api/v1/json/1/eventsnextleague.php?id=4328\""
+        buildConfigField "String", "CLUB", "\"api/v1/json/1/lookupteam.php?\""
         vectorDrawables.useSupportLibrary = true
     }
     buildTypes {
