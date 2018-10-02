@@ -13,7 +13,7 @@ import com.example.toshiba.footballmatch.view.DetailActivity
 
 class EventAdapter(private val event: MutableList<EventsItem>) : RecyclerView.Adapter<EventAdapter.ItemView>() {
 
-    var context: Context? = null
+    private var context: Context? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, p1: Int): ItemView {
         val v = LayoutInflater.from(parent.context).inflate(R.layout.item_event, parent, false)

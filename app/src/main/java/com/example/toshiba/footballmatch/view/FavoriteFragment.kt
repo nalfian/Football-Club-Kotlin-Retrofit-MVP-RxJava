@@ -10,16 +10,15 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
 import android.widget.Toast
-
 import com.example.toshiba.footballmatch.R
 import com.example.toshiba.footballmatch.adapter.EventAdapter
 import com.example.toshiba.footballmatch.model.EventsItem
-import com.example.toshiba.footballmatch.presenter.NextPresenter
-import com.example.toshiba.footballmatch.presenter.NextView
+import com.example.toshiba.footballmatch.presenter.FavoritePresenter
+import com.example.toshiba.footballmatch.presenter.FavoriteView
 
-class NextFragment : Fragment(), NextView {
+class FavoriteFragment : Fragment(), FavoriteView {
+
     override fun onSuccess(events: List<EventsItem>) {
-        this.events?.clear()
         this.events?.addAll(events)
         eventAdapter?.notifyDataSetChanged()
     }
@@ -35,7 +34,7 @@ class NextFragment : Fragment(), NextView {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
-        val view = inflater.inflate(R.layout.fragment_next, container, false)
+        val view = inflater.inflate(R.layout.fragment_fav, container, false)
         initView(view)
         return view
     }
@@ -47,7 +46,10 @@ class NextFragment : Fragment(), NextView {
         eventAdapter = events?.let { EventAdapter(it) }
         rvItemList?.adapter = eventAdapter
 
-        val mainPresenter = NextPresenter(this)
-        mainPresenter.getMatch()
+        val mainPresenter = FavoritePresenter(this)
+        context?.let { mainPresenter.getFav(it) }
+        events?.clear()
     }
+
+
 }

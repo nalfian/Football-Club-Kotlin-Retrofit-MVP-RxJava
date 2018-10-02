@@ -21,6 +21,11 @@ class HomeActivity : AppCompatActivity() {
                 openFragment(fragment)
                 return@OnNavigationItemSelectedListener true
             }
+            R.id.navigation_favorite -> {
+                val fragment = FavoriteFragment()
+                openFragment(fragment)
+                return@OnNavigationItemSelectedListener true
+            }
         }
         false
     }

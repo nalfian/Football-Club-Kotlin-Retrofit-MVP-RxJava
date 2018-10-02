@@ -18,6 +18,7 @@ android {
         buildConfigField "String", "EVENT_LAST", "\"api/v1/json/1/eventspastleague.php?id=4328\""
         buildConfigField "String", "EVENT_NEXT", "\"api/v1/json/1/eventsnextleague.php?id=4328\""
         buildConfigField "String", "CLUB", "\"api/v1/json/1/lookupteam.php?\""
+        buildConfigField "String", "EVENT_ID", "\"api/v1/json/1/lookupevent.php?\""
         vectorDrawables.useSupportLibrary = true
     }
     buildTypes {
@@ -48,4 +49,8 @@ dependencies {
     implementation 'com.squareup.retrofit2:converter-gson:2.4.0'
     implementation 'com.squareup.okhttp3:logging-interceptor:3.9.0'
     implementation 'com.squareup.picasso:picasso:2.71828'
+    implementation 'com.android.support:support-annotations:28.0.0-rc02'
+    implementation 'com.android.support:exifinterface:28.0.0-rc02'
+
+    implementation "org.jetbrains.anko:anko-sqlite:$anko_version"
 }

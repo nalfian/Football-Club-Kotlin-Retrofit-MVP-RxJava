@@ -17,4 +17,7 @@ interface BaseApi {
 
     @GET(BuildConfig.CLUB)
     fun getClub(@Query("id") id: String): Call<ResponseClub>
+
+    @GET(BuildConfig.EVENT_ID)
+    fun getEvent(@Query("id") id: String): Call<ResponseMatch>
 }

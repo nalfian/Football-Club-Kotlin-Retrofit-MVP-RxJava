@@ -15,16 +15,6 @@ import com.example.toshiba.footballmatch.adapter.EventAdapter
 import com.example.toshiba.footballmatch.model.EventsItem
 import com.example.toshiba.footballmatch.presenter.PrevPresenter
 import com.example.toshiba.footballmatch.presenter.PrevView
-
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- *
- */
 class PrevFragment : Fragment(), PrevView {
 
     override fun onSuccess(events: List<EventsItem>) {
@@ -37,9 +27,9 @@ class PrevFragment : Fragment(), PrevView {
         Toast.makeText(context, "Cek Internet Anda", Toast.LENGTH_LONG).show()
     }
 
-    var events: MutableList<EventsItem>? = ArrayList()
-    var eventAdapter: EventAdapter? = null
-    var rvItemList: RecyclerView? = null
+    private var events: MutableList<EventsItem>? = ArrayList()
+    private var eventAdapter: EventAdapter? = null
+    private var rvItemList: RecyclerView? = null
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
