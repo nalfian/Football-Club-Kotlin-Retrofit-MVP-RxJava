@@ -24,7 +24,7 @@ class FavoriteFragment : Fragment(), FavoriteView {
     }
 
     override fun onFailure() {
-        Toast.makeText(context, "Cek Internet Anda", Toast.LENGTH_LONG).show()
+        Toast.makeText(context, context?.getString(R.string.failure), Toast.LENGTH_LONG).show()
     }
 
     private var events: MutableList<EventsItem>? = ArrayList()

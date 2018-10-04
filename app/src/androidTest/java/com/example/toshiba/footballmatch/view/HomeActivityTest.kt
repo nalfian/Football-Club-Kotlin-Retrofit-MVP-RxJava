@@ -28,7 +28,7 @@ class HomeActivityTest {
         onView(withId(rv_prev))
                 .check(matches(isDisplayed()))
         onView(withId(rv_prev)).perform(
-                RecyclerViewActions.actionOnItemAtPosition<RecyclerView.ViewHolder>(0, click()))
+                RecyclerViewActions.actionOnItemAtPosition<RecyclerView.ViewHolder>(1, click()))
 
         onView(withId(favorite))
                 .check(matches(isDisplayed()))
@@ -45,7 +45,7 @@ class HomeActivityTest {
         onView(withId(rv_next))
                 .check(matches(isDisplayed()))
         onView(withId(rv_next)).perform(
-                RecyclerViewActions.actionOnItemAtPosition<RecyclerView.ViewHolder>(0, click()))
+                RecyclerViewActions.actionOnItemAtPosition<RecyclerView.ViewHolder>(1, click()))
 
         onView(withId(favorite))
                 .check(matches(isDisplayed()))

@@ -31,7 +31,7 @@ class DetailPresenterTest {
     fun setUp() {
         MockitoAnnotations.initMocks(this)
         presenter = DetailPresenter(view)
-        api = UtilsApi.apiService
+        api = UtilsApi.apiService!!
     }
 
     @Test

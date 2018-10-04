@@ -36,7 +36,7 @@ class DetailActivity : AppCompatActivity(), DetailView {
     }
 
     override fun onFailure() {
-        Toast.makeText(this, "Cek Internet Anda", Toast.LENGTH_LONG).show()
+        Toast.makeText(this, getString(R.string.failure), Toast.LENGTH_LONG).show()
     }
 
     private var eventsItem: EventsItem? = null
@@ -48,7 +48,7 @@ class DetailActivity : AppCompatActivity(), DetailView {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detail)
-        supportActionBar?.title = "Detail Match"
+        supportActionBar?.title = getString(R.string.detail)
         eventsItem = intent.getParcelableExtra("data")
         detailPresenter = DetailPresenter(this)
         eventsItem?.idHomeTeam?.let { detailPresenter?.getClub(it, true) }
@@ -112,7 +112,7 @@ class DetailActivity : AppCompatActivity(), DetailView {
             insert(Favorite.TABLE_FAVORITE,
                     Favorite.EVENT_ID to eventsItem?.idEvent)
         }
-        Toast.makeText(this, "Add to Favorite", Toast.LENGTH_LONG).show()
+        Toast.makeText(this, getString(R.string.add), Toast.LENGTH_LONG).show()
     }
 
     private fun removeFromFavorite() {
@@ -120,7 +120,7 @@ class DetailActivity : AppCompatActivity(), DetailView {
             delete(Favorite.TABLE_FAVORITE, "(EVENT_ID = {id})",
                     "id" to eventsItem?.idEvent.toString())
         }
-        Toast.makeText(this, "Remove from Favorite", Toast.LENGTH_LONG).show()
+        Toast.makeText(this, getString(R.string.remove), Toast.LENGTH_LONG).show()
     }
 
     private fun favoriteState() {
