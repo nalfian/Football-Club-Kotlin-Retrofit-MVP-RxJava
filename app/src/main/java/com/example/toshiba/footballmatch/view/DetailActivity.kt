@@ -93,7 +93,7 @@ class DetailActivity : AppCompatActivity(), DetailView {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         val id = item.itemId
-        return if (id == R.id.navigation_favorite) {
+        return if (id == R.id.favorite) {
             if (check) {
                 addToFavorite()
                 item.icon = ContextCompat.getDrawable(this, R.drawable.ic_favorite_black_24dp)

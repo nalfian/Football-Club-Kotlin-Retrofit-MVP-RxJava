@@ -11,17 +11,17 @@ class HomeActivity : AppCompatActivity() {
 
     private val mOnNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
         when (item.itemId) {
-            R.id.navigation_next -> {
+            R.id.nav_next -> {
                 val fragment = NextFragment()
                 openFragment(fragment)
                 return@OnNavigationItemSelectedListener true
             }
-            R.id.navigation_Prev -> {
+            R.id.nav_prev -> {
                 val fragment = PrevFragment()
                 openFragment(fragment)
                 return@OnNavigationItemSelectedListener true
             }
-            R.id.navigation_favorite -> {
+            R.id.nav_favorite -> {
                 val fragment = FavoriteFragment()
                 openFragment(fragment)
                 return@OnNavigationItemSelectedListener true

@@ -40,7 +40,7 @@ class FavoriteFragment : Fragment(), FavoriteView {
     }
 
     private fun initView(view: View?) {
-        rvItemList = view?.findViewById(R.id.rv)
+        rvItemList = view?.findViewById(R.id.rv_fav)
 
         rvItemList?.layoutManager = LinearLayoutManager(context, LinearLayout.VERTICAL, false)
         eventAdapter = events?.let { EventAdapter(it) }
