@@ -13,17 +13,20 @@ import android.widget.Toast
 import com.example.toshiba.footballmatch.R
 import com.example.toshiba.footballmatch.adapter.EventAdapter
 import com.example.toshiba.footballmatch.model.EventsItem
+import com.example.toshiba.footballmatch.other.EspressoTestingIdlingResource
 import com.example.toshiba.footballmatch.presenter.PrevPresenter
 import com.example.toshiba.footballmatch.presenter.PrevView
 class PrevFragment : Fragment(), PrevView {
 
     override fun onSuccess(events: List<EventsItem>) {
+        EspressoTestingIdlingResource.decrement()
         this.events?.clear()
         this.events?.addAll(events)
         eventAdapter?.notifyDataSetChanged()
     }
 
     override fun onFailure() {
+        EspressoTestingIdlingResource.decrement()
         Toast.makeText(context, context?.getString(R.string.failure), Toast.LENGTH_LONG).show()
     }
 
@@ -40,12 +43,13 @@ class PrevFragment : Fragment(), PrevView {
     }
 
     private fun initView(view: View?) {
-        rvItemList = view?.findViewById(R.id.rv_fav)
+        rvItemList = view?.findViewById(R.id.rv_prev)
 
         rvItemList?.layoutManager = LinearLayoutManager(context, LinearLayout.VERTICAL, false)
         eventAdapter = events?.let { EventAdapter(it) }
         rvItemList?.adapter = eventAdapter
 
+        EspressoTestingIdlingResource.increment()
         val mainPresenter = PrevPresenter(this)
         mainPresenter.getMatch()
     }

@@ -14,7 +14,7 @@ import retrofit2.Response
 class FavoritePresenter(val favoriteView: FavoriteView) {
 
     fun getFav(context: Context) {
-        val api: BaseApi = UtilsApi.apiService
+        val api: BaseApi? = UtilsApi.apiService
         val favorites: MutableList<Favorite> = mutableListOf()
 
         context.database.use {
@@ -25,7 +25,7 @@ class FavoritePresenter(val favoriteView: FavoriteView) {
 
         for (i in 0 until favorites.size) {
             favorites[i].eventId?.let {
-                api.getEvent(it).enqueue(object : retrofit2.Callback<ResponseMatch> {
+                api?.getEvent(it)?.enqueue(object : retrofit2.Callback<ResponseMatch> {
                     override fun onFailure(call: Call<ResponseMatch>?, t: Throwable?) {
                         favoriteView.onFailure()
                     }

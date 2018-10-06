@@ -31,7 +31,7 @@ class MatchPresenterTest {
     fun setUp() {
         MockitoAnnotations.initMocks(this)
         presenter = PrevPresenter(view)
-        api = UtilsApi.apiService
+        api = UtilsApi.apiService!!
     }
 
     @Test
