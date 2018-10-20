@@ -14,6 +14,7 @@ import android.support.test.runner.AndroidJUnit4
 import android.support.v7.widget.RecyclerView
 import com.example.toshiba.footballmatch.R.id.*
 import com.example.toshiba.footballmatch.other.EspressoTestingIdlingResource
+import com.example.toshiba.footballmatch.view.activity.HomeActivity
 import org.hamcrest.CoreMatchers.`is`
 import org.hamcrest.CoreMatchers.not
 import org.junit.After

@@ -15,10 +15,16 @@ android {
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
         buildConfigField "String", "BASE_URL", "\"https://www.thesportsdb.com/\""
-        buildConfigField "String", "EVENT_LAST", "\"api/v1/json/1/eventspastleague.php?id=4328\""
-        buildConfigField "String", "EVENT_NEXT", "\"api/v1/json/1/eventsnextleague.php?id=4328\""
+        buildConfigField "String", "EVENT_LAST", "\"api/v1/json/1/eventspastleague.php?\""
+        buildConfigField "String", "EVENT_NEXT", "\"api/v1/json/1/eventsnextleague.php?\""
         buildConfigField "String", "CLUB", "\"api/v1/json/1/lookupteam.php?\""
         buildConfigField "String", "EVENT_ID", "\"api/v1/json/1/lookupevent.php?\""
+
+        buildConfigField "String", "EVENT_SEARCH", "\"api/v1/json/1/searchevents.php?\""
+        buildConfigField "String", "TEAM_ALL", "\"api/v1/json/1/lookup_all_teams.php?\""
+        buildConfigField "String", "TEAM_SEARCH", "\"api/v1/json/1/searchteams.php?\""
+        buildConfigField "String", "PLAYER_ID", "\"api/v1/json/1/lookup_all_players.php?\""
+
         vectorDrawables.useSupportLibrary = true
     }
     buildTypes {

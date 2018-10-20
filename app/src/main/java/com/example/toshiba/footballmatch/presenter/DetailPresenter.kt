@@ -1,7 +1,6 @@
 package com.example.toshiba.footballmatch.presenter
 
-import com.example.toshiba.footballmatch.model.ResponseClub
-import com.example.toshiba.footballmatch.model.ResponseMatch
+import com.example.toshiba.footballmatch.model.ResponseTeam
 import com.example.toshiba.footballmatch.other.BaseApi
 import com.example.toshiba.footballmatch.other.UtilsApi
 import retrofit2.Call
@@ -12,12 +11,12 @@ class DetailPresenter(val detailView: DetailView){
 
     fun getClub(id: String, home: Boolean){
         api = UtilsApi.apiService
-        api?.getClub(id)?.enqueue(object : retrofit2.Callback<ResponseClub>{
-            override fun onFailure(call: Call<ResponseClub>?, t: Throwable?) {
+        api?.getClub(id)?.enqueue(object : retrofit2.Callback<ResponseTeam>{
+            override fun onFailure(call: Call<ResponseTeam>?, t: Throwable?) {
                 detailView.onFailure()
             }
 
-            override fun onResponse(call: Call<ResponseClub>?, response: Response<ResponseClub>?) {
+            override fun onResponse(call: Call<ResponseTeam>?, response: Response<ResponseTeam>?) {
                 if (home){
                     response?.body()?.teams?.get(0)?.let { detailView.onSuccesHome(it) }
                 } else{

@@ -8,9 +8,9 @@ import retrofit2.Response
 
 class NextPresenter(val nextView: NextView) {
     private var api: BaseApi? = null
-    fun getMatch() {
+    fun getMatch(id: String) {
         api = UtilsApi.apiService
-        api?.getMatchNext()?.enqueue(object : retrofit2.Callback<ResponseMatch> {
+        api?.getMatchNext(id)?.enqueue(object : retrofit2.Callback<ResponseMatch> {
             override fun onFailure(call: Call<ResponseMatch>?, t: Throwable?) {
                 nextView.onFailure()
             }

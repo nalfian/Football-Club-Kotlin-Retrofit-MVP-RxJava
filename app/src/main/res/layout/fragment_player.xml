@@ -1,25 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".view.fragment.PrevFragment">
+    android:layout_height="match_parent">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:descendantFocusability="blocksDescendants"
         android:orientation="vertical">
 
-        <Spinner
-            android:id="@+id/spMatch"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/size_4"
-            android:layout_marginRight="@dimen/size_4" />
-
         <android.support.v7.widget.RecyclerView
-            android:id="@+id/rv_prev"
+            android:id="@+id/rv_next"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/size_4" />

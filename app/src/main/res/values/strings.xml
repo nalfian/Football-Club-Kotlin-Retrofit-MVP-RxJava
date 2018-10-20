@@ -1,15 +1,34 @@
 <resources>
     <string name="app_name">FootBall Match</string>
-    <string name="title_activity_home">HomeActivity</string>
     <string name="title_next">Next Match</string>
     <string name="title_prev">Prev Match</string>
-    <string name="title_notifications">Notifications</string>
 
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="favorite">Favorite</string>
     <string name="add">Add to Favorite</string>
     <string name="remove">Remove from Favorite</string>
     <string name="detail">Detail Match</string>
     <string name="failure">Cek Internet Anda</string>
+    <string name="search_match">Search Match</string>
+    <string name="search_team">Search Team</string>
+    <string name="team">Team</string>
+    <string name="favorit_match">Fav Match</string>
+    <string name="favorit_team">Fav Team</string>
+    <string name="next">Next Match</string>
+    <string name="prev">Previous Match</string>
+    <string name="fav_matc">Favorit Match</string>
+    <string name="fav_team">Favorit Team</string>
+    <string name="teamm">Team</string>
+
+    <array name="leagueArray">
+        <item>English Premier League</item>
+        <item>German Bundesliga</item>
+        <item>Italian Serie A</item>
+        <item>French Ligue 1</item>
+        <item>Spanish La Liga</item>
+        <item>Netherlands Eredivisie</item>
+    </array>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

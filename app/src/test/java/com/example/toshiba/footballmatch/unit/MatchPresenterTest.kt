@@ -50,6 +50,6 @@ class MatchPresenterTest {
 
         })
 
-        presenter.getMatch()
+        presenter.getMatch("4328")
     }
 }

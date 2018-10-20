@@ -1,4 +1,4 @@
-package com.example.toshiba.footballmatch.view
+package com.example.toshiba.footballmatch.view.fragment
 
 
 import android.os.Bundle

@@ -1,6 +1,6 @@
 package com.example.toshiba.footballmatch.unit
 
-import com.example.toshiba.footballmatch.model.ResponseClub
+import com.example.toshiba.footballmatch.model.ResponseTeam
 import com.example.toshiba.footballmatch.other.BaseApi
 import com.example.toshiba.footballmatch.other.UtilsApi
 import com.example.toshiba.footballmatch.presenter.DetailPresenter
@@ -37,12 +37,12 @@ class DetailPresenterTest {
     @Test
     fun testGetTeam() {
 
-        api.getClub("1234").enqueue(object : retrofit2.Callback<ResponseClub> {
-            override fun onFailure(call: Call<ResponseClub>?, t: Throwable?) {
+        api.getClub("1234").enqueue(object : retrofit2.Callback<ResponseTeam> {
+            override fun onFailure(call: Call<ResponseTeam>?, t: Throwable?) {
                 Mockito.verify(view).onFailure()
             }
 
-            override fun onResponse(call: Call<ResponseClub>?, response: Response<ResponseClub>?) {
+            override fun onResponse(call: Call<ResponseTeam>?, response: Response<ResponseTeam>?) {
                 response?.body()?.teams?.get(0)?.let {
                     Mockito.verify(view).onSuccesHome(it)
                 }

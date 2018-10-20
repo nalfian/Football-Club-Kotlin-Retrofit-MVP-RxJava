@@ -1,4 +1,4 @@
-package com.example.toshiba.footballmatch.view
+package com.example.toshiba.footballmatch.view.activity
 
 import android.content.Intent
 import android.os.Bundle

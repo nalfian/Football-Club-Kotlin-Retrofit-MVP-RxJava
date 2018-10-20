@@ -1,7 +1,10 @@
 package com.example.toshiba.footballmatch.model
 
+import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
+import kotlinx.android.parcel.Parcelize
 
+@Parcelize
 data class TeamsItem(
 
         @field:SerializedName("intStadiumCapacity")
@@ -14,7 +17,7 @@ data class TeamsItem(
         val strSport: String? = null,
 
         @field:SerializedName("strDescriptionCN")
-        val strDescriptionCN: Any? = null,
+        val strDescriptionCN: String? = null,
 
         @field:SerializedName("strTeamJersey")
         val strTeamJersey: String? = null,
@@ -47,19 +50,19 @@ data class TeamsItem(
         val strTeamLogo: String? = null,
 
         @field:SerializedName("strDescriptionSE")
-        val strDescriptionSE: Any? = null,
+        val strDescriptionSE: String? = null,
 
         @field:SerializedName("strDescriptionJP")
-        val strDescriptionJP: Any? = null,
+        val strDescriptionJP: String? = null,
 
         @field:SerializedName("strDescriptionFR")
-        val strDescriptionFR: Any? = null,
+        val strDescriptionFR: String? = null,
 
         @field:SerializedName("strStadiumLocation")
         val strStadiumLocation: String? = null,
 
         @field:SerializedName("strDescriptionNL")
-        val strDescriptionNL: Any? = null,
+        val strDescriptionNL: String? = null,
 
         @field:SerializedName("strCountry")
         val strCountry: String? = null,
@@ -68,19 +71,19 @@ data class TeamsItem(
         val strRSS: String? = null,
 
         @field:SerializedName("strDescriptionRU")
-        val strDescriptionRU: Any? = null,
+        val strDescriptionRU: String? = null,
 
         @field:SerializedName("strTeamBanner")
         val strTeamBanner: String? = null,
 
         @field:SerializedName("strDescriptionNO")
-        val strDescriptionNO: Any? = null,
+        val strDescriptionNO: String? = null,
 
         @field:SerializedName("strStadiumThumb")
         val strStadiumThumb: String? = null,
 
         @field:SerializedName("strDescriptionES")
-        val strDescriptionES: Any? = null,
+        val strDescriptionES: String? = null,
 
         @field:SerializedName("intFormedYear")
         val intFormedYear: String? = null,
@@ -104,7 +107,7 @@ data class TeamsItem(
         val strYoutube: String? = null,
 
         @field:SerializedName("strDescriptionIL")
-        val strDescriptionIL: Any? = null,
+        val strDescriptionIL: String? = null,
 
         @field:SerializedName("strLocked")
         val strLocked: String? = null,
@@ -119,13 +122,13 @@ data class TeamsItem(
         val strTwitter: String? = null,
 
         @field:SerializedName("strDescriptionHU")
-        val strDescriptionHU: Any? = null,
+        val strDescriptionHU: String? = null,
 
         @field:SerializedName("strGender")
         val strGender: String? = null,
 
         @field:SerializedName("strDivision")
-        val strDivision: Any? = null,
+        val strDivision: String? = null,
 
         @field:SerializedName("strStadium")
         val strStadium: String? = null,
@@ -137,7 +140,7 @@ data class TeamsItem(
         val strTeamBadge: String? = null,
 
         @field:SerializedName("strDescriptionPT")
-        val strDescriptionPT: Any? = null,
+        val strDescriptionPT: String? = null,
 
         @field:SerializedName("strDescriptionDE")
         val strDescriptionDE: String? = null,
@@ -152,5 +155,5 @@ data class TeamsItem(
         val strKeywords: String? = null,
 
         @field:SerializedName("strDescriptionPL")
-        val strDescriptionPL: Any? = null
-)
+        val strDescriptionPL: String? = null
+) : Parcelable

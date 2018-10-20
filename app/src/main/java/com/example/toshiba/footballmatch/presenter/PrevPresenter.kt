@@ -8,9 +8,9 @@ import retrofit2.Response
 
 class PrevPresenter(val prevEvent: PrevView) {
     private var api: BaseApi? = null
-    fun getMatch() {
+    fun getMatch(id: String) {
         api = UtilsApi.apiService
-        api?.getMatchPrev()?.enqueue(object : retrofit2.Callback<ResponseMatch> {
+        api?.getMatchPrev(id)?.enqueue(object : retrofit2.Callback<ResponseMatch> {
             override fun onFailure(call: Call<ResponseMatch>?, t: Throwable?) {
                 prevEvent.onFailure()
             }

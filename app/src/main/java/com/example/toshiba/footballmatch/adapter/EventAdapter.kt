@@ -9,7 +9,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import com.example.toshiba.footballmatch.R
 import com.example.toshiba.footballmatch.model.EventsItem
-import com.example.toshiba.footballmatch.view.DetailActivity
+import com.example.toshiba.footballmatch.view.activity.DetailActivity
 
 class EventAdapter(private val event: MutableList<EventsItem>) : RecyclerView.Adapter<EventAdapter.ItemView>() {
 
