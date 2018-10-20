@@ -157,7 +157,6 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
                 android:gravity="center_horizontal"
                 android:text="Goals"
                 android:textColor="@color/colorPrimary" />
@@ -190,7 +189,6 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
                 android:gravity="center_horizontal"
                 android:text="Shots"
                 android:textColor="@color/colorPrimary" />
@@ -223,7 +221,6 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
             android:gravity="center_horizontal"
             android:text="Lineups" />
 
@@ -235,7 +232,6 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
                 android:gravity="center_horizontal"
                 android:text="Goal Keeper"
                 android:textColor="@color/colorPrimary" />
@@ -268,7 +264,6 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
                 android:gravity="center_horizontal"
                 android:text="Defense"
                 android:textColor="@color/colorPrimary" />
@@ -301,7 +296,6 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
                 android:gravity="center_horizontal"
                 android:text="Midfield"
                 android:textColor="@color/colorPrimary" />
@@ -334,7 +328,6 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
                 android:gravity="center_horizontal"
                 android:text="Forward"
                 android:textColor="@color/colorPrimary" />
@@ -367,7 +360,6 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
                 android:gravity="center_horizontal"
                 android:text="Substitutes"
                 android:textColor="@color/colorPrimary" />

@@ -90,13 +90,15 @@ class NextFragment : Fragment(), NextView {
     }
 
     override fun onCreateOptionsMenu(menu: Menu?, inflater: MenuInflater?) {
-        inflater?.inflate(R.menu.menu_search_team, menu)
+        inflater?.inflate(R.menu.menu_search, menu)
         val searchView = menu?.findItem(R.id.search_team)?.actionView as SearchView
         searchView.isIconfiedByDefault
         searchView.queryHint = resources.getString(R.string.search_team)
         searchView.isFocusable = true
         searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
+                EspressoTestingIdlingResource.increment()
+                query?.let { presenter?.getSearch(it) }
                 return false
             }
 

@@ -98,6 +98,8 @@ class PrevFragment : Fragment(), PrevView {
         searchView.isFocusable = true
         searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
+                EspressoTestingIdlingResource.increment()
+                query?.let { presenter?.getSearch(it) }
                 return false
             }
 

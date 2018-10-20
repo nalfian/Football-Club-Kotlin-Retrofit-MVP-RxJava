@@ -3,6 +3,7 @@ package com.example.toshiba.footballmatch.other
 import com.example.toshiba.footballmatch.BuildConfig
 import com.example.toshiba.footballmatch.model.ResponseTeam
 import com.example.toshiba.footballmatch.model.ResponseMatch
+import com.example.toshiba.footballmatch.model.ResponseMatchSearch
 import com.example.toshiba.footballmatch.model.ResponsePlayer
 import okhttp3.ResponseBody
 import retrofit2.Call
@@ -23,10 +24,10 @@ interface BaseApi {
     fun getEvent(@Query("id") id: String): Call<ResponseMatch>
 
     @GET(BuildConfig.TEAM_SEARCH)
-    fun getSearchTeam(@Query("name") query: String?): Call<ResponseTeam>
+    fun getSearchTeam(@Query("t") query: String?): Call<ResponseTeam>
 
     @GET(BuildConfig.EVENT_SEARCH)
-    fun getSearchMatch(@Query("name") query: String?): Call<ResponseMatch>
+    fun getSearchMatch(@Query("e") query: String?): Call<ResponseMatchSearch>
 
     @GET(BuildConfig.TEAM_ALL)
     fun getAllTeam(@Query("id") id: String): Call<ResponseTeam>
