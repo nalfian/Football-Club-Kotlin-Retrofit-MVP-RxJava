@@ -88,9 +88,9 @@ class TeamFragment : Fragment(), TeamView {
 
     override fun onCreateOptionsMenu(menu: Menu?, inflater: MenuInflater?) {
         inflater?.inflate(R.menu.menu_search_team, menu)
-        val searchView = menu?.findItem(R.id.search)?.actionView as SearchView
+        val searchView = menu?.findItem(R.id.search_team)?.actionView as SearchView
         searchView.isIconfiedByDefault
-        searchView.queryHint = resources.getString(R.string.search_match)
+        searchView.queryHint = resources.getString(R.string.search_team)
         searchView.isFocusable = true
         searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
