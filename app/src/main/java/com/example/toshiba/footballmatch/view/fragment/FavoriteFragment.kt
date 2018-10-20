@@ -24,7 +24,9 @@ class FavoriteFragment : Fragment(), FavoriteView {
     }
 
     override fun onFailure() {
-        Toast.makeText(context, context?.getString(R.string.failure), Toast.LENGTH_LONG).show()
+        if (context != null) {
+            Toast.makeText(context, context?.getString(R.string.failure), Toast.LENGTH_LONG).show()
+        }
     }
 
     private var events: MutableList<EventsItem>? = ArrayList()
@@ -43,7 +45,7 @@ class FavoriteFragment : Fragment(), FavoriteView {
         rvItemList = view?.findViewById(R.id.rv_fav)
 
         rvItemList?.layoutManager = LinearLayoutManager(context, LinearLayout.VERTICAL, false)
-        eventAdapter = events?.let { EventAdapter(it) }
+        eventAdapter = events?.let { EventAdapter(it, false, activity) }
         rvItemList?.adapter = eventAdapter
 
         val mainPresenter = FavoritePresenter(this)

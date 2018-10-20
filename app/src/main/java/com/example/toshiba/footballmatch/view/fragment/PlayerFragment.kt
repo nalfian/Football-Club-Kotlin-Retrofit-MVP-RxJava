@@ -26,7 +26,9 @@ class PlayerFragment : Fragment(), PlayerView {
     }
 
     override fun onFailure() {
-        Toast.makeText(context, context?.getString(R.string.failure), Toast.LENGTH_LONG).show()
+        if (context != null) {
+            Toast.makeText(context, context?.getString(R.string.failure), Toast.LENGTH_LONG).show()
+        }
     }
 
     private var player: MutableList<PlayerItem>? = ArrayList()

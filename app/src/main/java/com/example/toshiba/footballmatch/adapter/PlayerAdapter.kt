@@ -1,6 +1,7 @@
 package com.example.toshiba.footballmatch.adapter
 
 import android.content.Context
+import android.content.Intent
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
@@ -9,6 +10,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import com.example.toshiba.footballmatch.R
 import com.example.toshiba.footballmatch.model.PlayerItem
+import com.example.toshiba.footballmatch.view.activity.DetailPlayerActivity
 import com.squareup.picasso.Picasso
 
 class PlayerAdapter(private val player: MutableList<PlayerItem>) : RecyclerView.Adapter<PlayerAdapter.ItemView>() {
@@ -27,6 +29,10 @@ class PlayerAdapter(private val player: MutableList<PlayerItem>) : RecyclerView.
         Picasso.get()
                 .load(player[position].strThumb)
                 .into(holder.ivPlayer)
+        holder.itemView.setOnClickListener {
+            context?.startActivity(Intent(context, DetailPlayerActivity::class.java)
+                    .putExtra("data", player[position]))
+        }
     }
 
     override fun getItemCount(): Int {

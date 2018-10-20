@@ -26,7 +26,9 @@ class PrevFragment : Fragment(), PrevView {
 
     override fun onFailure() {
         EspressoTestingIdlingResource.decrement()
-        Toast.makeText(context, context?.getString(R.string.failure), Toast.LENGTH_LONG).show()
+        if (context != null) {
+            Toast.makeText(context, context?.getString(R.string.failure), Toast.LENGTH_LONG).show()
+        }
     }
 
     private var events: MutableList<EventsItem>? = ArrayList()
@@ -74,7 +76,7 @@ class PrevFragment : Fragment(), PrevView {
         rvItemList = view?.findViewById(R.id.rv_prev)
 
         rvItemList?.layoutManager = LinearLayoutManager(context, LinearLayout.VERTICAL, false)
-        eventAdapter = events?.let { EventAdapter(it) }
+        eventAdapter = events?.let { EventAdapter(it, false, activity) }
         rvItemList?.adapter = eventAdapter
         rvItemList?.isNestedScrollingEnabled = false
 
