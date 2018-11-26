@@ -11,6 +11,7 @@ import android.widget.*
 import com.example.toshiba.footballmatch.R
 import com.example.toshiba.footballmatch.adapter.TeamAdapter
 import com.example.toshiba.footballmatch.model.TeamsItem
+import com.example.toshiba.footballmatch.other.AppScheduler
 import com.example.toshiba.footballmatch.other.EspressoTestingIdlingResource
 import com.example.toshiba.footballmatch.presenter.TeamPresenter
 import com.example.toshiba.footballmatch.presenter.TeamView
@@ -51,7 +52,8 @@ class TeamFragment : Fragment(), TeamView {
         teamAdapter = teams?.let { TeamAdapter(it) }
         rvItemList?.adapter = teamAdapter
 
-        presenter = TeamPresenter(this)
+        val schedulers = AppScheduler()
+        presenter = TeamPresenter(this, schedulers)
         presenter?.getTeam("4328")
         teams?.clear()
     }

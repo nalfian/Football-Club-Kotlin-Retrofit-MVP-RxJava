@@ -1,38 +1,42 @@
 package com.example.toshiba.footballmatch.presenter
 
+import com.example.toshiba.footballmatch.model.ResponseMatchSearch
+import com.example.toshiba.footballmatch.other.AppScheduler
 import com.example.toshiba.footballmatch.other.BaseApi
 import com.example.toshiba.footballmatch.other.UtilsApi
-import com.example.toshiba.footballmatch.model.ResponseMatch
-import com.example.toshiba.footballmatch.model.ResponseMatchSearch
+import io.reactivex.disposables.CompositeDisposable
 import retrofit2.Call
 import retrofit2.Response
 
-class PrevPresenter(val prevEvent: PrevView) {
+class PrevPresenter(val prevEvent: PrevView, val schedulers: AppScheduler) {
     private var api: BaseApi? = UtilsApi.apiService
+    private val subscription = CompositeDisposable()
 
     fun getMatch(id: String) {
-        api?.getMatchPrev(id)?.enqueue(object : retrofit2.Callback<ResponseMatch> {
-            override fun onFailure(call: Call<ResponseMatch>?, t: Throwable?) {
-                prevEvent.onFailure()
-            }
-
-            override fun onResponse(call: Call<ResponseMatch>?, response: Response<ResponseMatch>?) {
-                response?.body()?.events?.let { prevEvent.onSuccess(it) }
-            }
-
-        })
+        subscription.add(api!!.getMatchPrev(id)
+                .observeOn(schedulers.ui())
+                .subscribeOn(schedulers.io())
+                .subscribe({
+                    prevEvent.onSuccess(it.events!!)
+                },
+                        {
+                            prevEvent.onFailure()
+                        }
+                )
+        )
     }
 
     fun getSearch(name: String) {
-        api?.getSearchMatch(name)?.enqueue(object : retrofit2.Callback<ResponseMatchSearch> {
-            override fun onFailure(call: Call<ResponseMatchSearch>?, t: Throwable?) {
-                prevEvent.onFailure()
-            }
-
-            override fun onResponse(call: Call<ResponseMatchSearch>?, response: Response<ResponseMatchSearch>?) {
-                response?.body()?.events?.let { prevEvent.onSuccess(it) }
-            }
-
-        })
+        subscription.add(api!!.getSearchMatch(name)
+                .observeOn(schedulers.ui())
+                .subscribeOn(schedulers.io())
+                .subscribe({
+                    prevEvent.onSuccess(it.events!!)
+                },
+                        {
+                            prevEvent.onFailure()
+                        }
+                )
+        )
     }
 }

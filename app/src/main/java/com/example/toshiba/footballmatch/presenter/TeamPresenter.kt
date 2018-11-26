@@ -1,36 +1,42 @@
 package com.example.toshiba.footballmatch.presenter
 
 import com.example.toshiba.footballmatch.model.ResponseTeam
+import com.example.toshiba.footballmatch.other.AppScheduler
 import com.example.toshiba.footballmatch.other.BaseApi
 import com.example.toshiba.footballmatch.other.UtilsApi
+import io.reactivex.disposables.CompositeDisposable
 import retrofit2.Call
 import retrofit2.Response
 
-class TeamPresenter(val teamView: TeamView) {
+class TeamPresenter(val teamView: TeamView, val schedulers: AppScheduler) {
     private var api: BaseApi? = UtilsApi.apiService
+    private val subscription = CompositeDisposable()
 
     fun getTeam(id: String) {
-        api?.getAllTeam(id)?.enqueue(object : retrofit2.Callback<ResponseTeam> {
-            override fun onFailure(call: Call<ResponseTeam>, t: Throwable) {
-                teamView.onFailure()
-            }
-
-            override fun onResponse(call: Call<ResponseTeam>, response: Response<ResponseTeam>) {
-                response.body()?.teams?.let { teamView.onSuccess(it) }
-            }
-        })
+        subscription.add(api!!.getAllTeam(id)
+                .observeOn(schedulers.ui())
+                .subscribeOn(schedulers.io())
+                .subscribe({
+                    teamView.onSuccess(it.teams!!)
+                },
+                        {
+                            teamView.onFailure()
+                        }
+                )
+        )
     }
 
     fun getSearch(name: String) {
-        api = UtilsApi.apiService
-        api?.getSearchTeam(name)?.enqueue(object : retrofit2.Callback<ResponseTeam> {
-            override fun onFailure(call: Call<ResponseTeam>, t: Throwable) {
-                teamView.onFailure()
-            }
-
-            override fun onResponse(call: Call<ResponseTeam>, response: Response<ResponseTeam>) {
-                response.body()?.teams?.let { teamView.onSuccess(it) }
-            }
-        })
+        subscription.add(api!!.getSearchTeam(name)
+                .observeOn(schedulers.ui())
+                .subscribeOn(schedulers.io())
+                .subscribe({
+                    teamView.onSuccess(it.teams!!)
+                },
+                        {
+                            teamView.onFailure()
+                        }
+                )
+        )
     }
 }

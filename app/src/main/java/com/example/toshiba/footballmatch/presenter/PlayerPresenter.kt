@@ -1,23 +1,28 @@
 package com.example.toshiba.footballmatch.presenter
 
 import com.example.toshiba.footballmatch.model.ResponsePlayer
+import com.example.toshiba.footballmatch.other.AppScheduler
 import com.example.toshiba.footballmatch.other.BaseApi
 import com.example.toshiba.footballmatch.other.UtilsApi
+import io.reactivex.disposables.CompositeDisposable
 import retrofit2.Call
 import retrofit2.Response
 
-class PlayerPresenter(val playerView: PlayerView) {
-    private var api: BaseApi? = null
-    fun getPlayer(id: String) {
-        api = UtilsApi.apiService
-        api?.getAllPlayers(id)?.enqueue(object : retrofit2.Callback<ResponsePlayer> {
-            override fun onFailure(call: Call<ResponsePlayer>, t: Throwable) {
-                playerView.onFailure()
-            }
+class PlayerPresenter(val playerView: PlayerView, val schedulers: AppScheduler) {
+    private var api: BaseApi? = UtilsApi.apiService
+    private val subscription = CompositeDisposable()
 
-            override fun onResponse(call: Call<ResponsePlayer>, response: Response<ResponsePlayer>) {
-                response.body()?.player?.let { playerView.onSucces(it) }
-            }
-        })
+    fun getPlayer(id: String) {
+        subscription.add(api!!.getAllPlayers(id)
+                .observeOn(schedulers.ui())
+                .subscribeOn(schedulers.io())
+                .subscribe({
+                    playerView.onSucces(it?.player!!)
+                },
+                        {
+                            playerView.onFailure()
+                        }
+                )
+        )
     }
 }

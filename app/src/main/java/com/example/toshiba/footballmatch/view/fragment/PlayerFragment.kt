@@ -14,6 +14,7 @@ import com.example.toshiba.footballmatch.R
 import com.example.toshiba.footballmatch.adapter.PlayerAdapter
 import com.example.toshiba.footballmatch.model.PlayerItem
 import com.example.toshiba.footballmatch.model.TeamsItem
+import com.example.toshiba.footballmatch.other.AppScheduler
 import com.example.toshiba.footballmatch.presenter.PlayerPresenter
 import com.example.toshiba.footballmatch.presenter.PlayerView
 
@@ -54,7 +55,9 @@ class PlayerFragment : Fragment(), PlayerView {
         rvItemList?.adapter = playerAdapter
         rvItemList?.isNestedScrollingEnabled = false
 
-        presenter = PlayerPresenter(this)
+
+        val schedulers = AppScheduler()
+        presenter = PlayerPresenter(this, schedulers)
         team?.idTeam?.let { presenter?.getPlayer(it) }
     }
 }

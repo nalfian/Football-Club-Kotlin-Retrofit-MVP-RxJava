@@ -30,7 +30,7 @@ class DetailPresenterTest {
     @Before
     fun setUp() {
         MockitoAnnotations.initMocks(this)
-        presenter = DetailPresenter(view)
+        presenter = DetailPresenter(view, schedulers)
         api = UtilsApi.apiService!!
     }
 

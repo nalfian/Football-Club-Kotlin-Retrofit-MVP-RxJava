@@ -11,13 +11,13 @@ import com.example.toshiba.footballmatch.R
 import com.example.toshiba.footballmatch.model.EventsItem
 import com.example.toshiba.footballmatch.model.Favorite
 import com.example.toshiba.footballmatch.model.TeamsItem
+import com.example.toshiba.footballmatch.other.AppScheduler
 import com.example.toshiba.footballmatch.other.database
 import com.example.toshiba.footballmatch.presenter.DetailPresenter
 import com.example.toshiba.footballmatch.presenter.DetailView
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_detail.*
 import org.jetbrains.anko.db.classParser
-import org.jetbrains.anko.db.delete
 import org.jetbrains.anko.db.insert
 import org.jetbrains.anko.db.select
 
@@ -50,7 +50,8 @@ class DetailActivity : AppCompatActivity(), DetailView {
         setContentView(R.layout.activity_detail)
         supportActionBar?.title = getString(R.string.detail)
         eventsItem = intent.getParcelableExtra("data")
-        detailPresenter = DetailPresenter(this)
+        val schedulers = AppScheduler()
+        detailPresenter = DetailPresenter(this, schedulers)
         eventsItem?.idHomeTeam?.let { detailPresenter?.getClub(it, true) }
         initSet()
     }
@@ -116,10 +117,10 @@ class DetailActivity : AppCompatActivity(), DetailView {
     }
 
     private fun removeFromFavorite() {
-        database.use {
-            delete(Favorite.TABLE_FAVORITE, "(EVENT_ID = {id})",
-                    "id" to eventsItem?.idEvent.toString())
-        }
+//        database.use {
+//            delete(Favorite.TABLE_FAVORITE, "(EVENT_ID = {id})",
+//                    "id" to eventsItem?.idEvent.toString())
+//        }
         Toast.makeText(this, getString(R.string.remove), Toast.LENGTH_LONG).show()
     }
 

@@ -11,6 +11,7 @@ import android.widget.*
 import com.example.toshiba.footballmatch.R
 import com.example.toshiba.footballmatch.adapter.EventAdapter
 import com.example.toshiba.footballmatch.model.EventsItem
+import com.example.toshiba.footballmatch.other.AppScheduler
 import com.example.toshiba.footballmatch.other.EspressoTestingIdlingResource
 import com.example.toshiba.footballmatch.presenter.NextPresenter
 import com.example.toshiba.footballmatch.presenter.NextView
@@ -80,7 +81,8 @@ class NextFragment : Fragment(), NextView {
         rvItemList?.isNestedScrollingEnabled = false
 
         EspressoTestingIdlingResource.increment()
-        presenter = NextPresenter(this)
+        val schedulers = AppScheduler()
+        presenter = NextPresenter(this, schedulers)
         presenter?.getMatch("4328")
     }
 

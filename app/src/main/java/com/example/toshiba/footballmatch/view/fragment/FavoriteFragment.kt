@@ -13,6 +13,7 @@ import android.widget.Toast
 import com.example.toshiba.footballmatch.R
 import com.example.toshiba.footballmatch.adapter.EventAdapter
 import com.example.toshiba.footballmatch.model.EventsItem
+import com.example.toshiba.footballmatch.other.AppScheduler
 import com.example.toshiba.footballmatch.presenter.FavoritePresenter
 import com.example.toshiba.footballmatch.presenter.FavoriteView
 
@@ -48,7 +49,8 @@ class FavoriteFragment : Fragment(), FavoriteView {
         eventAdapter = events?.let { EventAdapter(it, false, activity) }
         rvItemList?.adapter = eventAdapter
 
-        val mainPresenter = FavoritePresenter(this)
+        val schedulers = AppScheduler()
+        val mainPresenter = FavoritePresenter(this, schedulers)
         context?.let { mainPresenter.getFav(it) }
         events?.clear()
     }
